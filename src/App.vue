@@ -16,7 +16,7 @@ it is not actively fetching anything of any Backend, It is just changing the app
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Quiz</router-link> |
+      <router-link to="/quiz">Quiz</router-link> |
       <router-link to="/theory">Theory</router-link>
     </div>
     <router-view/>
@@ -29,6 +29,9 @@ it is not actively fetching anything of any Backend, It is just changing the app
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  pre {
+    text-align: left;
+  }
 }
 #nav {
   padding: 30px;

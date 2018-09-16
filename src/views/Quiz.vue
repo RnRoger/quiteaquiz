@@ -12,10 +12,12 @@ This gets servet when the quiz route is called
 
 <template>
   <div class="quiz">
-
-    <h1>Some none dynamic content </h1>
+<!--
+      <h1>Some none dynamic content </h1>
     <img alt="Vue logo" src="../assets/logo.png"> 
     <h3> bellow a dynamic component (QuizComponent) </h3>
+-->
+
 
   <!--  Here we can use QuizComponent from Quiz.vue, as we define it as a component in the JS of this page 
         this is also one of the way we can set it's properties (like the quiz name)
