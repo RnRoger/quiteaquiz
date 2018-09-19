@@ -1,31 +1,34 @@
 <template>
   <div class="quiz__component">
     <h1> Title of the quiz: {{ quizName }}</h1>
+   <span> score: {{ totalScore }} / {{ questions.length *10 }} </span> 
 
     <div class="quiz__questions">
-      <div class="quiz__question"
+      <div class="quiz__questionContainer"
            v-for="question in questions"
            :key="question.id"> 
-          <h3> {{ question.title}} </h3>
-          <p> {{ question.question }} </p>
-          <div class="question__answers">
-            <div class="question__answer"
-              v-for="answer in question.answers"
-              :key="answer.id">
-            <input type="radio" :id="question.id +'_'+ answer.id" 
-                   :name="question.id" :value="answer.id" checked 
-                   v-model="question.answerSelected" />
-            <label :for="question.id +'_'+ answer.id"> {{ answer.text }} </label>
+            <div class="question__header">
+              <h2 class="question__title"> {{ question.title}} </h2>
+              <span class="question__picked">you picked answer: {{ question.answerSelected }}</span>
+              <div class="question__statement"> {{ question.question }} </div>
             </div>
-            <span>Picked: {{ question.answerSelected }}</span>
+            <div class="question__answers">
+              <div class="question__answer"
+                v-for="answer in question.answers"
+                :key="answer.id">
+              <input  class="question__answer__input"
+                      type="radio" 
+                      :id="question.id +'_'+ answer.id" 
+                      :name="question.id" 
+                      :value="answer.id" checked 
+                      v-model="question.answerSelected" />
+              <label :for="question.id +'_'+ answer.id"> <span> {{ answer.text }} </span> </label>
+              </div>
           </div>
       </div>
     </div>
 
     <button type="button" v-on:click="calculateScore"> submit </button>
-
-   <span> score: {{ totalScore }} / {{ questions.length *10 }} </span> 
-
 
   </div>
 </template>
@@ -60,7 +63,7 @@ export default {
         id:1,
         title: "this is question 1",
         answered: false,
-        question: "chose a number (correct answer is one)",
+        question: "choose a number (correct answer is one)",
         answers: [
           {
             id: 1,
@@ -86,7 +89,7 @@ export default {
         id:2,
         title: "this is question 2",
         answered: false,
-        question: "chose a number (correct answer is three)",
+        question: "choose a number (correct answer is three)",
         answers: [
           {
             id: 1,
@@ -114,21 +117,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
